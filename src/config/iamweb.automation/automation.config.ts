@@ -97,12 +97,8 @@ export const AutomationConfig = {
   },
   // 아임웹 상품 아이디 ( 대절상품인 경우는 추가 할 필요 없음)
   iamwebProductID: {
-    privateTaxi: 133,
     pickup: 83,
     sanding: 122,
-    tPrivateTaxi: 148,
-    tPickup: 146,
-    tSanding: 147,
   },
   // 아임웨 API 설정
   iamwebApi: {

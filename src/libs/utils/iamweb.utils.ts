@@ -121,13 +121,7 @@ export class IamwebUtils {
     switch (productNo) {
       case type.pickup:
       case type.sanding:
-      case type.tSanding:
-      case type.tPickup:
         typeRes = '편도';
-      // case type.privateTaxi:
-      // case type.tPrivateTaxi:
-      // default:
-      //   return '대절';
     }
     return typeRes;
   }

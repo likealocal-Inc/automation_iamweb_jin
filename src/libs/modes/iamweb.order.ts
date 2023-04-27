@@ -93,10 +93,7 @@ export class IamwebProductModel {
       const productType = AutomationConfig.iamwebProductID;
 
       // 서울 -> 공항
-      if (
-        this.items.prod_no.toString() === productType.sanding.toString() ||
-        this.items.prod_no.toString() === productType.tSanding.toString()
-      ) {
+      if (this.items.prod_no.toString() === productType.sanding.toString()) {
         this.items.startAddress = options[0];
         this.items.startLocation = options[2];
         this.items.endLocation = options[1];
@@ -108,8 +105,7 @@ export class IamwebProductModel {
       }
       // 공항 -> 서울
       else if (
-        this.items.prod_no.toString() === productType.pickup.toString() ||
-        this.items.prod_no.toString() === productType.tPickup.toString()
+        this.items.prod_no.toString() === productType.pickup.toString()
       ) {
         this.items.startAddress = '';
         this.items.startLocation = options[1];
@@ -119,11 +115,6 @@ export class IamwebProductModel {
         this.items.wayPoint = '';
         this.items.rentTime = '';
         this.items.orderType = '편도';
-
-        // }
-        // else if (
-        // this.items.prod_no.toString() === productType.tPrivateTaxi.toString()
-        // ) {
 
         // }
       } else {
