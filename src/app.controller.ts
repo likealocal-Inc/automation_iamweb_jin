@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { AppService } from './app.service';
 import { LogFileUtil } from './libs/core/logfile.utils';
 import { AutomationConfig } from './config/iamweb.automation/automation.config';
+import { TelegramUtils } from './libs/core/telegram.utils';
 
 // 토큰 배열에 저장될 클래스 타입
 class TokenForLogfile {
@@ -20,7 +21,9 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
+  async getHello(): Promise<string> {
+    const data = new TelegramUtils();
+    console.log(await data.getChatRoomId());
     return this.appService.getHello();
   }
 

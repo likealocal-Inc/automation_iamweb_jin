@@ -32,17 +32,25 @@ export class AutomationDataConvert {
       formData[11], // E '결제시간',
       '', // F 취소일자
       '', // G 취소시간
-      '라이크어로컬', //H
-      '010-9985-9547', // I
-      formData[14], // J 서비스명(편도/대절)
-      formData[20], // orderData.product_item.items.rentTime, // '-', // K - 대절시간
-      formData[6], // orderData.orderer.name, // L'이용자명',
-      '010-9985-9547', // M 이용자 연락처,
-      `${formData[30]} ${formData[31]}`, // N'탑승일자', //'탑승시간',
-      formData[15] + ' [' + formData[17] + ']', //  O `${orderData.product_item.items.startLocation} ${orderData.product_item.items.startAddress}`, // O'출발지 위치명' '출발지주소',
-      formData[19], // orderData.product_item.items.wayPoint, // P 경유지
-      formData[22] + ' [' + formData[24] + ']', // Q `${orderData.product_item.items.endLocation} ${orderData.product_item.items.endAddress}`, // Q'도착지위치명',, // '도착지주소',
-      formData[29], // R '탐승인원',
+      formData[6], // 주문자명
+      formData[7], // 주문자이메일
+      formData[8], // 주문자연락처
+      formData[13], //상품명
+      formData[14], // 편도/대절
+      formData[15], // 출발지명
+      formData[16], // 출발지주소
+      formData[17], // 도착공항
+      formData[18], // 도착지명
+      formData[19], // 도착지주소
+      formData[20], // 출발공항
+      formData[21], // 이용자명
+      formData[22], // 이용자연락처
+      formData[23], // 탑승일자
+      formData[24], // 탑승시간
+      formData[25], // 탑승인원
+      formData[26], // 비행편
+      formData[27], // 여행용가방수량
+      formData[28], // 기타
       dispatchStatus, // S
     ];
 
@@ -75,7 +83,7 @@ export class AutomationDataConvert {
     const jsonNewData = [
       cellNum.toString(), // '번호'
       iamwebOrderStatus.toString(), // '상태값'
-      '구입채널', // '구입채널'
+      '-', // '구입채널'
       orderData.orderer.member_code, // '회원코드',
       orderData.orderer.name, //'닉네임',
       orderData.orderer.email, //'계정',
@@ -88,30 +96,25 @@ export class AutomationDataConvert {
       `${orderData.payment.total_price}(${orderData.payment.price_currency})`, //'결제금액',
       orderData.product_item.items.prod_name, // '상품명',
       orderData.product_item.items.orderType, // '대절, 편도'
+
       orderData.product_item.items.startLocation, //'출발지 위치명',
-      '출발지 위치명(관리자)',
       orderData.product_item.items.startAddress, //'출발지주소',
-      '출발지주소(관리자)',
-      orderData.product_item.items.wayPoint, // 경유지
-      orderData.product_item.items.rentTime, // 대절시간
-      orderData.product_item.items.endAirport, // '도착공항',
-      orderData.product_item.items.endLocation, //'도착지위치명',
-      '도착지위치명(관리자)',
-      orderData.product_item.items.endAddress, // '도착지주소',
-      '도착지주소(관리자)',
       orderData.product_item.items.startAirport, //'출발공항',
+
+      orderData.product_item.items.endLocation, //'도착지위치명',
+      orderData.product_item.items.endAddress, // '도착지주소',
+      orderData.product_item.items.endAirport, // '도착공항',
       snsChannel, //'SNS채널',
       snsId, //'SNS ID',
       boardingPersonCount, //'탐승인원',
       boardingDate, //'탑승일자',
       boardingTime, //'탑승시간',
-      '(변경)탑승시간',
       airplane, //'비행편',
       takeOffAndLandingTime, //'이착륙시간',
       etc, //'기타',
-      '취소사유',
-      '취소일자',
-      '취소시간',
+      '-',
+      '-',
+      '-',
     ];
     return jsonNewData;
   }

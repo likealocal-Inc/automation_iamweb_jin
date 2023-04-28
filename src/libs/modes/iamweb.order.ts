@@ -94,11 +94,11 @@ export class IamwebProductModel {
 
       // 서울 -> 공항
       if (this.items.prod_no.toString() === productType.sanding.toString()) {
-        this.items.startAddress = options[0];
-        this.items.startLocation = options[2];
-        this.items.endLocation = options[1];
+        this.items.startLocation = options[0]; // 출발지 명
+        this.items.startAddress = options[1]; // 출발지 주소
+        this.items.startAirport = options[2];
+        this.items.endLocation = ''; //options[1]; // 도착주소
         this.items.endAddress = '';
-        this.items.startAirport = options[1];
         this.items.wayPoint = '';
         this.items.rentTime = '';
         this.items.orderType = '편도';
@@ -108,23 +108,15 @@ export class IamwebProductModel {
         this.items.prod_no.toString() === productType.pickup.toString()
       ) {
         this.items.startAddress = '';
-        this.items.startLocation = options[1];
+        this.items.startLocation = ''; //options[1];
         this.items.endLocation = options[0];
-        this.items.endAddress = options[2];
-        this.items.endAirport = options[1];
+        this.items.endAddress = options[1];
+        this.items.endAirport = options[2];
         this.items.wayPoint = '';
         this.items.rentTime = '';
         this.items.orderType = '편도';
 
         // }
-      } else {
-        this.items.startLocation = options[0]; // 출발지
-        this.items.wayPoint = options[1];
-        this.items.startAddress = ''; // options[1]; // 경유
-        this.items.endLocation = options[2]; // 목적지
-        this.items.rentTime = options[3];
-        this.items.endAddress = ''; //options[3]; // 대절시간
-        this.items.orderType = '대절';
       }
     }
   }

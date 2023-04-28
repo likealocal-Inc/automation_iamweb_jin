@@ -55,16 +55,16 @@ export const AutomationConfig = {
       range: {
         order: {
           start: 'B',
-          end: 'Z',
+          end: 'AJ',
         },
         log: {
           start: 'B',
-          end: 'AA',
+          end: 'AJ',
         },
         status: {
-          start: 'S',
-          end: 'S',
-          arrIndex: 17,
+          start: 'AA',
+          end: 'AA',
+          arrIndex: 25,
         },
       },
     },
@@ -97,8 +97,8 @@ export const AutomationConfig = {
   },
   // 아임웹 상품 아이디 ( 대절상품인 경우는 추가 할 필요 없음)
   iamwebProductID: {
-    pickup: 83,
-    sanding: 122,
+    pickup: 4,
+    sanding: 1,
   },
   // 아임웨 API 설정
   iamwebApi: {
