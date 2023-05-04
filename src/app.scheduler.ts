@@ -67,11 +67,26 @@ export class AppScheduler {
     this.init();
   }
 
+  @Cron('0 1 * * * *')
+  order01() {
+    this.iamwebOrderSearch();
+  }
+  @Cron('0 15 * * * *')
+  order02() {
+    this.iamwebOrderSearch();
+  }
+  @Cron('0 30 * * * *')
+  order03() {
+    this.iamwebOrderSearch();
+  }
+  @Cron('0 45 * * * *')
+  order04() {
+    this.iamwebOrderSearch();
+  }
+
   /**
    * 아임웹 주문 조회 -> 구글시트에 작성
    */
-  @Cron('1 * * * * *')
-  // @Cron('0 10 * * * *')
   async iamwebOrderSearch() {
     const info = '아임웹 주문데이터 조회 -> 주문 구글시트 스케쥴';
     console.log(`----------- ${info} -------------`);
@@ -144,12 +159,27 @@ export class AppScheduler {
     }
   }
 
+  @Cron('0 4 * * * *')
+  orderLog01() {
+    this.iamwebOrderCheckChange();
+  }
+  @Cron('0 19 * * * *')
+  orderLog02() {
+    this.iamwebOrderCheckChange();
+  }
+  @Cron('0 34 * * * *')
+  orderLog03() {
+    this.iamwebOrderCheckChange();
+  }
+  @Cron('0 49 * * * *')
+  orderLog04() {
+    this.iamwebOrderCheckChange();
+  }
+
   /**
    * 아엠웹 구글시트로그 작성
    * @returns
    */
-  @Cron('16 * * * * *')
-  // @Cron('0 25 * * * *')
   async iamwebOrderCheckChange() {
     const info = '아임웹 주문데이터 변경에 대한 로그처리 스케쥴';
     console.log(`----------- ${info} -------------`);
@@ -246,11 +276,26 @@ export class AppScheduler {
     }
   }
 
+  @Cron('0 8 * * * *')
+  dispatch01() {
+    this.addDispatchSheetInGoogleSheet();
+  }
+  @Cron('0 23 * * * *')
+  dispatch02() {
+    this.addDispatchSheetInGoogleSheet();
+  }
+  @Cron('0 38 * * * *')
+  dispatch03() {
+    this.addDispatchSheetInGoogleSheet();
+  }
+  @Cron('0 53 * * * *')
+  dispatch04() {
+    this.addDispatchSheetInGoogleSheet();
+  }
+
   /**
    * 주문 -> 배차 시트에 작성
    */
-  @Cron('31 * * * * *')
-  // @Cron('0 40 * * * *')
   async addDispatchSheetInGoogleSheet() {
     const info = '배차데이터 추가 스케쥴';
     console.log(`----------- ${info} -------------`);
@@ -314,11 +359,26 @@ export class AppScheduler {
     }
   }
 
+  @Cron('0 12 * * * *')
+  dispatchLog01() {
+    this.dispatchChange();
+  }
+  @Cron('0 27 * * * *')
+  dispatchLog02() {
+    this.dispatchChange();
+  }
+  @Cron('0 42 * * * *')
+  dispatchLog03() {
+    this.dispatchChange();
+  }
+  @Cron('0 57 * * * *')
+  dispatchLog04() {
+    this.dispatchChange();
+  }
+
   /**
    * 배차 데이터 변경처리
    */
-  @Cron('46 * * * * *')
-  // @Cron('0 55 * * * *')
   async dispatchChange() {
     const info =
       '배차데이터 변경에 따른 처리 -> 상태값에 따른 주문데이터 처리포함';
@@ -347,9 +407,11 @@ export class AppScheduler {
         // DB에 저장된 데이터와 현재 구글시트의 데이터가 다를 경우
         // -> 변경된 데이터에 대한 처리
         if (lineNewDataString !== dispatchDB.infoData) {
+          // 구글시트에서 상태값 셀
           const statusIndex =
             AutomationConfig.googleSheet.dispatch.range.status.arrIndex;
 
+          // 구분자
           const delim = AutomationConfig.sign.arrToStrDelim;
 
           // 상태값 체크
