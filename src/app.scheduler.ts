@@ -67,22 +67,22 @@ export class AppScheduler {
     this.init();
   }
 
-  @Cron('0 1 * * * *')
+  @Cron('1 * * * * *')
   order01() {
     this.iamwebOrderSearch();
   }
-  @Cron('0 15 * * * *')
-  order02() {
-    this.iamwebOrderSearch();
-  }
-  @Cron('0 30 * * * *')
-  order03() {
-    this.iamwebOrderSearch();
-  }
-  @Cron('0 45 * * * *')
-  order04() {
-    this.iamwebOrderSearch();
-  }
+  // @Cron('0 15 * * * *')
+  // order02() {
+  //   this.iamwebOrderSearch();
+  // }
+  // @Cron('0 30 * * * *')
+  // order03() {
+  //   this.iamwebOrderSearch();
+  // }
+  // @Cron('0 45 * * * *')
+  // order04() {
+  //   this.iamwebOrderSearch();
+  // }
 
   /**
    * 아임웹 주문 조회 -> 구글시트에 작성
@@ -159,22 +159,22 @@ export class AppScheduler {
     }
   }
 
-  @Cron('0 4 * * * *')
+  @Cron('15 * * * * *')
   orderLog01() {
     this.iamwebOrderCheckChange();
   }
-  @Cron('0 19 * * * *')
-  orderLog02() {
-    this.iamwebOrderCheckChange();
-  }
-  @Cron('0 34 * * * *')
-  orderLog03() {
-    this.iamwebOrderCheckChange();
-  }
-  @Cron('0 49 * * * *')
-  orderLog04() {
-    this.iamwebOrderCheckChange();
-  }
+  // @Cron('0 19 * * * *')
+  // orderLog02() {
+  //   this.iamwebOrderCheckChange();
+  // }
+  // @Cron('0 34 * * * *')
+  // orderLog03() {
+  //   this.iamwebOrderCheckChange();
+  // }
+  // @Cron('0 49 * * * *')
+  // orderLog04() {
+  //   this.iamwebOrderCheckChange();
+  // }
 
   /**
    * 아엠웹 구글시트로그 작성
@@ -276,22 +276,22 @@ export class AppScheduler {
     }
   }
 
-  @Cron('0 8 * * * *')
+  @Cron('30 * * * * *')
   dispatch01() {
     this.addDispatchSheetInGoogleSheet();
   }
-  @Cron('0 23 * * * *')
-  dispatch02() {
-    this.addDispatchSheetInGoogleSheet();
-  }
-  @Cron('0 38 * * * *')
-  dispatch03() {
-    this.addDispatchSheetInGoogleSheet();
-  }
-  @Cron('0 53 * * * *')
-  dispatch04() {
-    this.addDispatchSheetInGoogleSheet();
-  }
+  // @Cron('0 23 * * * *')
+  // dispatch02() {
+  //   this.addDispatchSheetInGoogleSheet();
+  // }
+  // @Cron('0 38 * * * *')
+  // dispatch03() {
+  //   this.addDispatchSheetInGoogleSheet();
+  // }
+  // @Cron('0 53 * * * *')
+  // dispatch04() {
+  //   this.addDispatchSheetInGoogleSheet();
+  // }
 
   /**
    * 주문 -> 배차 시트에 작성
@@ -359,22 +359,22 @@ export class AppScheduler {
     }
   }
 
-  @Cron('0 12 * * * *')
+  @Cron('45 * * * * *')
   dispatchLog01() {
     this.dispatchChange();
   }
-  @Cron('0 27 * * * *')
-  dispatchLog02() {
-    this.dispatchChange();
-  }
-  @Cron('0 42 * * * *')
-  dispatchLog03() {
-    this.dispatchChange();
-  }
-  @Cron('0 57 * * * *')
-  dispatchLog04() {
-    this.dispatchChange();
-  }
+  // @Cron('0 27 * * * *')
+  // dispatchLog02() {
+  //   this.dispatchChange();
+  // }
+  // @Cron('0 42 * * * *')
+  // dispatchLog03() {
+  //   this.dispatchChange();
+  // }
+  // @Cron('0 57 * * * *')
+  // dispatchLog04() {
+  //   this.dispatchChange();
+  // }
 
   /**
    * 배차 데이터 변경처리
