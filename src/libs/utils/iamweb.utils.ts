@@ -187,7 +187,9 @@ export class IamwebUtils {
   ): Promise<IamwebOrderGoogleModel[]> {
     // 토큰가져오기
 
-    let accessToken = await this.__getAcessToken();
+    let accessToken = await this.__getAcessToken(true);
+    console.log('accessToken', accessToken);
+
     if (accessToken === undefined) return;
 
     const result = [];
@@ -198,6 +200,7 @@ export class IamwebUtils {
       endTimeStatmp,
       accessToken,
     );
+    console.log('res', res);
 
     if (res === undefined) return;
 
@@ -266,6 +269,9 @@ export class IamwebUtils {
     fromDay.setDate(
       today.getDate() - Number(AutomationConfig.iamwebApi.orderSearchDays),
     );
+
+    console.log(today);
+    console.log(fromDay);
 
     // 주문리스트를 조회
     return await this.getIamwebOrderList(
