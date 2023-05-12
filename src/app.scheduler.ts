@@ -96,6 +96,8 @@ export class AppScheduler {
       const iamwebOrderList: IamwebOrderGoogleModel[] =
         await this.iamwebUtils.getOrderListFromIamweb();
 
+      console.log('새로운 주문내역');
+      console.log(iamwebOrderList);
       // 주문데이터가 없을 경우 이후 작업 없음
       if (iamwebOrderList === undefined || iamwebOrderList.length === 0) {
         return;
