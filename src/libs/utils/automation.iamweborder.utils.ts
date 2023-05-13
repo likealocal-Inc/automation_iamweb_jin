@@ -13,6 +13,7 @@ import { AutomationSchedulerUtils } from './automation.scheduler.utils';
 import { IamwebOrderInfo, LineNumber } from '@prisma/client';
 import { DispatchStatus } from '../modes/dispatch.status';
 import { AutomationDispatchUtils } from './automation.dispatch.utils';
+import { TelegramUtils } from '../core/telegram.utils';
 
 /**
  * 아임웹 주문관련 유틸
@@ -22,6 +23,7 @@ export class AutomationIamwebOrderUtils {
   googleIamwebOrderUtil: GoogleSheetUtils;
   googleIamwebOrderLogUtil: GoogleSheetUtils;
   slackUtil: SlackUtil;
+  telegramUtil: TelegramUtils;
   automationDbUtils: AutomationDBUtils;
   automationSchedulerUtils: AutomationSchedulerUtils;
 
@@ -42,6 +44,7 @@ export class AutomationIamwebOrderUtils {
     );
 
     this.slackUtil = new SlackUtil(this.httpService);
+    this.telegramUtil = new TelegramUtils();
     this.automationDbUtils = new AutomationDBUtils();
   }
 
@@ -121,12 +124,18 @@ export class AutomationIamwebOrderUtils {
     newCellNum: number,
     orderData: IamwebOrderGoogleModel,
   ): Promise<void> {
-    await this.slackUtil.send(
-      SlackAlertType.IAMWEB_ORDER,
-      await AutomationConfig.alert.makeNewIamwebOrder(
-        newCellNum,
-        orderData.order_no,
-      ),
+    const msg = await AutomationConfig.alert.makeNewIamwebOrder(
+      newCellNum,
+      orderData.order_no,
+    );
+
+    // 슬랙
+    await this.slackUtil.send(SlackAlertType.IAMWEB_ORDER, msg);
+
+    // 텔레그램
+    await this.telegramUtil.send(
+      Number.parseInt(process.env.TELEGRAM_BOT_CHAT_ID.toString()),
+      msg,
     );
   }
 
@@ -182,6 +191,9 @@ export class AutomationIamwebOrderUtils {
       SlackAlertType.IAMWEB_ORDER,
       alertMessage,
     );
+
+    /// 알림 추가
+    await this.automationSchedulerUtils.sendTelegram(alertMessage);
 
     return alertMessage;
   }

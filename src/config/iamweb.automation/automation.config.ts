@@ -164,7 +164,7 @@ export const AutomationConfig = {
       newCellNum: number,
       orderNo: number,
     ): Promise<string> => {
-      return `New Order[sheet_no:${newCellNum}, order_no:${orderNo}]`;
+      return `New Order\r\n[sheet_no:${newCellNum}, order_no:${orderNo}]`;
     },
     // 배차요청 등록
     makeRequestDispatch: async (
@@ -172,7 +172,7 @@ export const AutomationConfig = {
       dispatchGoogleLineNumber: number,
       data: string,
     ): Promise<string> => {
-      return `배차요청등록: [${time}] [${dispatchGoogleLineNumber}]:${data}\r\n\r\n`;
+      return `배차요청등록\r\n[${time}] [${dispatchGoogleLineNumber}]:${data}\r\n\r\n`;
     },
     // 상태값 변경
     makeChangeStatus: async (
